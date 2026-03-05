@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Počasí kdekoliv na světě</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>🌍 Globální počasí</h1>
+      <p>
+        Vyber si libovolné místo na světě, podívej se na aktuální teplotu,
+        denní přehled a interaktivní grafy.
+      </p>
+    </header>
+
+    <section class="panel controls">
+      <label for="searchInput">Vyhledej město / místo</label>
+      <div class="search-row">
+        <input id="searchInput" type="text" placeholder="Např. Praha, Tokyo, New York..." />
+        <button id="searchButton">Najít místa</button>
+      </div>
+
+      <label for="locationSelect">Výsledky (kombobox)</label>
+      <select id="locationSelect" disabled>
+        <option>Nejprve vyhledej místo…</option>
+      </select>
+
+      <button id="loadWeatherButton" disabled>Zobrazit počasí</button>
+      <p id="status" class="status" aria-live="polite"></p>
+    </section>
+
+    <section id="summary" class="panel summary hidden">
+      <h2 id="locationName"></h2>
+      <div class="summary-grid">
+        <article>
+          <h3>Aktuální teplota</h3>
+          <p id="currentTemp" class="value">—</p>
+        </article>
+        <article>
+          <h3>Max / Min dnes</h3>
+          <p id="dailyRange" class="value">—</p>
+        </article>
+        <article>
+          <h3>Pocitová teplota</h3>
+          <p id="apparentTemp" class="value">—</p>
+        </article>
+        <article>
+          <h3>Pravděpodobnost srážek (dnes)</h3>
+          <p id="precipProbability" class="value">—</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="charts" class="panel charts hidden">
+      <h2>Grafy počasí</h2>
+      <div class="chart-grid">
+        <article>
+          <h3>Hodinová teplota (24 h)</h3>
+          <canvas id="hourlyTempChart"></canvas>
+        </article>
+        <article>
+          <h3>7 dní: Min/Max teploty</h3>
+          <canvas id="dailyTempChart"></canvas>
+        </article>
+        <article>
+          <h3>Hodinové srážky (24 h)</h3>
+          <canvas id="rainChart"></canvas>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
